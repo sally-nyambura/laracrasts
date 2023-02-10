@@ -17,7 +17,7 @@ class Post extends Model
     public $body;
     public $slug;
 
-    public function __construct($title, $excerpt, $date, $body, $slug) {
+    public function __construct($title, $excerpt, $date, $slug, $body) {
 
         $this->title = $title;
         $this->excerpt = $excerpt;
@@ -28,7 +28,7 @@ class Post extends Model
 
     public static function allPosts() {
 
-        return cache()->rememberForever('posts.all', function() {
+        // return cache()->rememberForever('posts.all', function() {
 
         $files =  File::files(resource_path("posts/"));
 
@@ -44,11 +44,13 @@ class Post extends Model
             );
          })->sortByDesc('date'); 
 
-        });
+        // });
        
     }
 
     public static function find($slug) {
+
+        // return static::all()->firstWhere('slug', $slug);
 
         if(! file_exists($path = resource_path("posts/{$slug}.html"))) {
             throw new ModelNotFoundException();
@@ -63,5 +65,5 @@ class Post extends Model
             // var_dump('file_get_contents');
             return file_get_contents($path);
         });
-    }
+     }
 }
