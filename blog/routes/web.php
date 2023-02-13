@@ -17,14 +17,16 @@ use App\Models\Post;
 Route::get('/', function () {
 
     return view('posts', [
-        'posts' => Post::allPosts()
+        'posts' => Post::all()
     ]);
 });
 
-Route::get('/posts/{post}', function($slug) {
+/*Behind the scenes*/
+/*Go to database and Post::where('slug', $slug)->firstOrFail()*/
+Route::get('/posts/{post:slug}', function(Post $post) {
 
     return view('post', [
-        'post' => Post::findOrFail($slug)
+        'post' => $post
     ]);
 });
 

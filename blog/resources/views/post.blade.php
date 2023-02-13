@@ -13,7 +13,7 @@
 
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-9 m-auto">
+            <div class="col-md-9 mt-2 m-auto">
                 <h3>{{ $post->title }}</h3>
 
                 <span>{{ $post->excerpt }}</span>
