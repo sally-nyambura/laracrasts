@@ -23,12 +23,12 @@ class Post extends Model
         $this->excerpt = $excerpt;
         $this->date = $date;
         $this->slug = $slug;
-        $this->body = $body;        
+        $this->body = $body;
     }
 
     public static function allPosts() {
 
-        // return cache()->rememberForever('posts.all', function() {
+        return cache()->rememberForever('posts.all', function() {
 
         $files =  File::files(resource_path("posts/"));
 
@@ -39,31 +39,26 @@ class Post extends Model
                 $document->title,
                 $document->excerpt,
                 $document->date,
-                $document->slug,            
+                $document->slug,
                 $document->body(),
             );
-         })->sortByDesc('date'); 
+         })->sortByDesc('date');
 
-        // });
-       
+         });
+
     }
 
     public static function find($slug) {
 
-        // return static::all()->firstWhere('slug', $slug);
+         return static::allPosts()->firstWhere('slug', $slug);
 
-        if(! file_exists($path = resource_path("posts/{$slug}.html"))) {
-            throw new ModelNotFoundException();
+     }
+     public static function findOrFail($slug) {
 
-        // return redirect('/');
-          // abort(404);
-        // ddd("File does not exist");
-        // dd("File does not exist");
-        }
-
-        return cache()->remember("posts.{$slug}", now()->addMinutes(20), function() use($path) {
-            // var_dump('file_get_contents');
-            return file_get_contents($path);
-        });
+         $post = static::find($slug);
+         if (! $post) {
+             throw new ModelNotFoundException();
+         }
+         return $post;
      }
 }

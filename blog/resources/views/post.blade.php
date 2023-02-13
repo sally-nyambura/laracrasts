@@ -7,11 +7,25 @@
 
     <link rel="stylesheet" type="text/css" href="/app.css">
     <script type="text/javascript" src="app.js"></script>
+    @vite(['resources/sass/app.scss', 'resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body>
 
-    <?= $post ?>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-9 m-auto">
+                <h3>{{ $post->title }}</h3>
 
-    <a href="/">Go back</a>
+                <span>{{ $post->excerpt }}</span>
+                <br><br>
+                <div class="border-bottom">
+                    <small><span style="color: gray">{{ $post->date }}</span></small>
+                </div>
+                {{ $post->body }}
+                <br><br>
+                <a style="text-decoration: none" href="/">Go back</a>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
