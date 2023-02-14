@@ -1,11 +1,11 @@
-@extends('layout')
+@extends('layouts.app')
 
 @section('content')
 
     @foreach($posts as $post)
     <div class="container">
         <div class="row">
-            <div class="col-md-9 col-lg-9 m-auto mt-2 py-2">
+            <div class="col-md-9 align-sc m-auto mt-2 py-2">
                 <article>
                     <h1>
                         <a style="text-decoration: none;color: darkgreen" href="/posts/{{ $post->slug }}">
@@ -14,11 +14,14 @@
                     </h1>
 
                     <div>
-                        {{ $post->excerpt }}
+                        <code>{{ $post->excerpt }}</code>
                     </div>
 
                     <div class="border-bottom">
                         <span style="color: gray">Published at</span>
+                        <span style="float: right">
+                            <a style="text-decoration: none;color: gray" href="#">{{ $post->category->name }}</a>
+                        </span>
                     </div>
 
                     <br>
