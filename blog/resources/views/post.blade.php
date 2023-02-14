@@ -9,24 +9,7 @@
                 <span>{{ $post->excerpt }}</span>
                 <br><br>
 
-                <div class="border-bottom">
-                    <span style="color: gray">Published at</span>
-
-                    <span style="float: right">
-                        By
-
-                        <a href="#" style="color: gray;text-decoration: none">{{ $post->user->name }}</a>
-
-                        in
-
-                        <a
-                            style="text-decoration: none;color: blueviolet"
-                            href="/categories/{{ $post->category->id }}">
-                                <i>{{ $post->category->name }}</i>
-                        </a>
-
-                    </span>
-                </div>
+                <x-blog.blog-post :post="$post" />
 
                 {{ $post->body }}
                 <br><br>
