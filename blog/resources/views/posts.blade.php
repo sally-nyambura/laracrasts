@@ -20,7 +20,11 @@
                     <div class="border-bottom">
                         <span style="color: gray">Published at</span>
                         <span style="float: right">
-                            <a style="text-decoration: none;color: gray" href="#">{{ $post->category->name }}</a>
+                            <a
+                                style="text-decoration: none;color: blueviolet"
+                                href="/categories/{{ $post->category->slug }}">
+                                {{ $post->category->name }}
+                            </a>
                         </span>
                     </div>
 
