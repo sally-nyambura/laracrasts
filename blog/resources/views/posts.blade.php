@@ -1,8 +1,6 @@
-@extends('layouts.app')
+<x-layout>
 
-@section('content')
-
-    <div class="container">
+    {{--<div class="container">
         <div class="row">
             <div class="col-md-9 align-sc m-auto mt-2 py-2">
 
@@ -31,7 +29,23 @@
 
             </div>
         </div>
-    </div>
+    </div>--}}
 
+    @include('partials._posts-header')
 
-@endsection
+    <main class="max-w-6xl mx-auto mt-6 lg:mt-20 space-y-6">
+        <x-post.post-featured-card :post="$posts[0]" />
+
+        <div class="lg:grid lg:grid-cols-2">
+            <x-post.post-card />
+            <x-post.post-card />
+        </div>
+
+        <div class="lg:grid lg:grid-cols-3">
+            <x-post.post-card />
+            <x-post.post-card />
+            <x-post.post-card />
+        </div>
+    </main>
+
+</x-layout>
