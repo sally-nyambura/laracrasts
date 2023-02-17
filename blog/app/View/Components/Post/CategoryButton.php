@@ -4,7 +4,7 @@ namespace App\View\Components\Post;
 
 use Illuminate\View\Component;
 
-class PostCard extends Component
+class CategoryButton extends Component
 {
     /**
      * Create a new component instance.
@@ -25,6 +25,6 @@ class PostCard extends Component
      */
     public function render()
     {
-        return view('components.post.post-card');
+        return view('components.post.category-button');
     }
 }

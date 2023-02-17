@@ -4,7 +4,7 @@ namespace App\View\Components\Post;
 
 use Illuminate\View\Component;
 
-class PostCard extends Component
+class Grid extends Component
 {
     /**
      * Create a new component instance.
@@ -12,10 +12,11 @@ class PostCard extends Component
      * @return void
      */
 
-    public $post;
-    public function __construct($post)
+    public $posts;
+
+    public function __construct($posts)
     {
-        $this->post = $post;
+        $this->posts = $posts;
     }
 
     /**
@@ -25,6 +26,6 @@ class PostCard extends Component
      */
     public function render()
     {
-        return view('components.post.post-card');
+        return view('components.post.grid');
     }
 }
